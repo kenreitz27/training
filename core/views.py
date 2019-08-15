@@ -26,3 +26,6 @@ def core_signup(request):
       "form": form
     }
     return render(request, 'core_signup.html', context)
+  
+def core_login(request):
+  return render(request, 'core_login.html', {})
