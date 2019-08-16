@@ -6,9 +6,18 @@
 <h2>Login</h2>
 <form method="post">
   {% csrf_token %}
-  <div class="form-group">
-    {{ form.as_p }}
-  </div>
+  {% for error in form.non_field_errors %}
+  <p style="color: red">
+        {{ error }}
+      </p>
+  {% endfor %}  
+  {% for field in form %}
+    <div class="form-group">
+      <!--{{ form.as_p }} -->
+      {{ field.label_tag }} <br>
+      {{ field }}
+    </div>
+  {% endfor %}
   <button type="submit">Login</button>
 </form>
 
