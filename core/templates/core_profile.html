@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+
+<form method="post">
+  {% csrf_token %}
+  {% for field in user_form %}
+    <div class="form-group">
+      {{ field.label_tag }} <br>
+      {{ field }}
+    </div>
+  {% endfor %}
+  {% for field in profile_form %}
+    <div class="form-group">
+      {{ field.label_tag }} <br>
+      {{ field }}
+    </div>
+  {% endfor %}
+  <button type="submit">Save changes</button>
+</form>
+
+
+{% endblock %}
