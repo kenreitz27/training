@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'projects',
     'blog',
     'core',
+    'channels',
+    'posting',
+    #'reitzwaysite',
     #'hello_world',
 ]
 
@@ -72,7 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'reitzwaysite.wsgi.application'
-
+ASGI_APPLICATION = 'reitzwaysite.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -127,3 +130,12 @@ LOGIN_REDIRECT_URL = 'core_index'
 # Default Logout Redirect
 LOGOUT_REDIRECT_URL = 'core_index'
 
+# Configure the Channels
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("localhost", 6379)],
+#         },
+#     },
+# }
