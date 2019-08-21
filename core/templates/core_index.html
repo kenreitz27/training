@@ -5,7 +5,27 @@
 
 {% block page_content %}
   {% if user.is_authenticated %}
-    Hi {{ user.username }}!
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+  <!--     <img src="..." class="card-img-top" alt="...">  -->
+         <h2 class="title">
+           {{ user.first_name }}  {{ user.last_name }}
+         </h2>
+         <p class="text">
+         <b>GHIN:</b> {{ user.profile.ghin }} <br>
+         <b>Email:</b> {{ user.email }}           
+         </p>
+         <a href="{% url 'core_profile' %}"
+           class="btn btn-primary">
+          Edit Profile
+        </a>
+
+    </div>
+  </div>  
+</div>   
+
   {% else %}
     <p>You are not logged in</p>
     <a href="{% url 'login' %}">login</a>

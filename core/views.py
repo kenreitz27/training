@@ -52,7 +52,7 @@ def core_profile(request):
     user_form = UserForm(instance=request.user)
     profile_form = ProfileForm(instance=request.user.profile)
   
-  return render(request, 'core_profile.html', {
+  return render(request, 'core_profile_edit.html', {
     'user_form': user_form,
     'profile_form': profile_form
     })
