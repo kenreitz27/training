@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col">
+  <h1>Send a Message to {{ event.name }}</h1>
+  <form action="{% url 'post_info' event.pk %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group">
+          {{ field.label_tag }} <br>
+          {{ field }}
+      </div>
+    {% endfor %}
+    <button type="submit">
+      Send
+    </button>
+  </form>
+  </hr>
+  {% for message in messages %}
+  {{ message.created_on }}: <b>{{ message.message }}</b> <br>
+  {% endfor %}
+</div>
+
+{% endblock %}

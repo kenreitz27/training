@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col">
+    <h1>Event List</h1>
+    <hr>
+    {% for event in events %}
+    <h2>
+      {{ event.name }} 
+      <a class="btn btn-primary" href="{% url 'post_info' event.pk %}" role="button">Send</a>
+      <a class="btn btn-primary" href="{% url 'event_monitor' event.pk %}" role="button">Monitor</a>
+    </h2>
+    
+    {% endfor %}
+</div>
+{% endblock %}

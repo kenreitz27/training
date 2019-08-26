@@ -3,18 +3,18 @@
 {% block page_content %}
 <div class="container">
   <p>
-    This is the page I want to display channel posted information
+    This will be the messages for the event that are existing
   </p>
+  <hr/>
   <p>
-    <a href="{% url 'post_info' %}" class="btn btn-primary">Post Info</a>
-    <a href="{% url 'view_info' %}" class="btn btn-primary">View Info</a> 
+    Everything below the line will be new messages sent to the session
   </p>
 </div>
 {% endblock page_content %}
 
 {% block script %}
   <script>
-    var socket = new WebSocket('ws://' + window.location.host + '/users/');
+    var socket = new WebSocket('ws://' + window.location.host + '/messages/');
 
     socket.onopen = function open() {
       console.log('WebSockets connection created.');
