@@ -2,19 +2,20 @@
 
 {% block page_content %}
 <div class="container">
+  <h2>{{ event.name }}</h2>
+  {% for message in messages %}
+  {{ message.created_on }}: <b>{{ message.message }}</b> <br>
+  {% endfor %}
+  <hr/>
   <p>
-    This is the page I want to display channel posted information
-  </p>
-  <p>
-    <a href="{% url 'post_info' %}" class="btn btn-primary">Post Info</a>
-    <a href="{% url 'view_info' %}" class="btn btn-primary">View Info</a> 
+    Everything below the line will be new messages sent to the session
   </p>
 </div>
 {% endblock page_content %}
 
 {% block script %}
   <script>
-    var socket = new WebSocket('ws://' + window.location.host + '/users/');
+    var socket = new WebSocket('ws://' + window.location.host + '/messages/');
 
     socket.onopen = function open() {
       console.log('WebSockets connection created.');
