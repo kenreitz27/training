@@ -2,7 +2,7 @@
 {% block page_content %}
 <div class="col">
   <h1>Send a Message to {{ event.name }}</h1>
-  <form action="{% url 'post_info' event.pk %}" method="post">
+  <form id="sform" action="{% url 'post_info' event.pk %}" method="post">
     {% csrf_token %}
     {% for field in form %}
       <div class="form-group">
@@ -15,9 +15,67 @@
     </button>
   </form>
   </hr>
+  <ul id='message-list'>
   {% for message in messages %}
-  {{ message.created_on }}: <b>{{ message.message }}</b> <br>
+    <li>{{ message.created_on }}: - <b>{{ message.message }}</b> </li>
   {% endfor %}
+  </ul>
+    <hr/>
+  <p>
+    Everything below the line will be new messages sent to the session
+  </p>
 </div>
 
-{% endblock %}
+{% block script %}
+  <script>
+    console.log(window.location)
+    var loc = window.location
+    var formData = $("#sform")
+    var inputData = $('#id_message')
+    
+    
+    var wsStart = 'ws://'
+    if (loc.protocol == 'https:') {
+      wsStart = 'wss://'
+    }
+    var endpoint = wsStart + loc.host + loc.pathname 
+    console.log(endpoint)
+    var socket = new WebSocket(endpoint)
+    
+    socket.onmessage = function(e){
+      console.log("message", e)
+    }
+    
+    socket.onopen = function(e){
+      console.log("open", e)
+      formData.submit(function(event){
+        event.preventDefault()
+        var msgText = inputData.val()
+       // var formDataSerialzed = formData.serialize()
+        
+        var finalData = {
+          'message': msgText
+        }
+        
+        socket.send(JSON.stringify(finalData))
+        formData[0].reset()
+        inputData.focus()
+      })
+                      
+                     
+    }
+    
+    socket.onerror = function(e){
+      console.log("error", e)
+    }
+    
+    socket.onclose = function(e){
+      console.log("close", e)
+    }
+
+  </script>
+{% endblock script %}
+
+
+
+{% endblock page_content %}

@@ -13,7 +13,8 @@ application = ProtocolTypeRouter({
     AuthMiddlewareStack(
       URLRouter(
         [
-          path("posting/monitor-<int:event_pk>/", MessageConsumer),
+          path("posting/post-<int:event_pk>/", MessageConsumer),
+          path("posting/monitor-<int:event_pk>/", MessageConsumer),          
         ]
       )
     )

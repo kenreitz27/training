@@ -2,6 +2,11 @@ from django.db import models
 
 # Create your models here.
 
+# class EventManager(models.Manager):
+#   def by_event(self, event):
+#     qlookup = Q(event)
+
+
 class Event(models.Model):
   name = models.CharField(max_length=20)
   

@@ -46,7 +46,8 @@ def post_info(request, event_pk):
       message.save()
       
   form = MessageForm()
-  messages = Message.objects.filter(event=event).order_by('-created_on')[:3]
+  messages = reversed(Message.objects.filter(event=event).order_by('-created_on')[:100])
+  
   context = {
     "event": event,
     "messages": messages,
