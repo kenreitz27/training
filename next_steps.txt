@@ -1,0 +1,32 @@
+- Create Models
+
+- Course
+-- id
+-- Name
+
+- CourseTee
+-- Course.id
+-- id
+-- TeeName
+-- TeeColor
+
+- CourseTeeSlopeRating
+-- CourseTee.id
+-- id
+-- Gender
+--- Male
+--- Female
+-- Type
+--- Front
+--- Back
+--- Full
+-- NumberOfHoles
+
+- Hole
+-- 
+
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'event_list' %}">Events</a>
+    </li>
+

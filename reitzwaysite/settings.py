@@ -40,11 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'projects',
-    'blog',
+    #'projects',
+    #'blog',
     'core',
-    'channels',
-    'posting',
+    'courses',
+    #'channels',
+    #'posting',
     #'reitzwaysite',
     #'hello_world',
 ]
@@ -78,7 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'reitzwaysite.wsgi.application'
-ASGI_APPLICATION = 'reitzwaysite.routing.application'
+#ASGI_APPLICATION = 'reitzwaysite.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
