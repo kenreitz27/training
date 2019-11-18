@@ -1,4 +1,5 @@
 from django.contrib.auth import login, authenticate
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from core.forms import SignUpForm, UserForm, ProfileForm
 from django.contrib.auth.decorators import login_required
@@ -44,10 +45,10 @@ def core_profile(request):
     if user_form.is_valid() and profile_form.is_valid():
       user_form.save()
       profile_form.save()
-      messages.success(request, _('Your profile was successfully updated!'))
-      return redirect('settings:profile')
+      messages.success(request, 'Your profile was successfully updated!')
+      return redirect('core_index')
     else:
-      messages.error(request, _('Please correct the error below.'))
+      messages.error(request, 'Please correct the error below.')
   else:
     user_form = UserForm(instance=request.user)
     profile_form = ProfileForm(instance=request.user.profile)

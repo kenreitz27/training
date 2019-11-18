@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     #'projects',
     #'blog',
     'core',
-    'courses',
+    #'courses',
     #'channels',
     #'posting',
     #'reitzwaysite',
@@ -80,6 +80,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reitzwaysite.wsgi.application'
 #ASGI_APPLICATION = 'reitzwaysite.routing.application'
+
+MESSAGE_LEVEL = 10
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
